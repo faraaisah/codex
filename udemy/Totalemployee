@@ -11,3 +11,17 @@ FROM
 GROUP BY calendar_year , gender
 HAVING calendar_year >= 1990
 ORDER BY calendar_year;
+
+
+
+OUTPUT:
+Calendar_year    gender  num_of_employees
+1990	           M	   8134
+1990	           F	   5470
+1991	           M	   8295
+1991	           F	   5255
+1992	           M	   8480
+1992	           F	   5596
+1993	           M	   8483
+1993	           F	   5623
+1994	           M	   8468
