@@ -1,0 +1,13 @@
+The task : Create a visualization that provides a breakdown between the male and female employees working in the company each year, starting from 1990.
+
+SELECT 
+    YEAR(tde.from_date) AS calendar_year,
+    te.gender AS gender,
+    COUNT(tde.emp_no) AS num_of_employees
+FROM
+    t_dept_emp tde
+        JOIN
+    t_employees te ON tde.emp_no = te.emp_no
+GROUP BY calendar_year , gender
+HAVING calendar_year >= 1990
+ORDER BY calendar_year;
