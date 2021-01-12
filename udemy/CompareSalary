@@ -1,0 +1,45 @@
+SELECT 
+    e.gender AS gender,
+    d.dept_name AS dept_name,
+    Round(avg(s.salary),2) AS salary,
+    YEAR(s.from_date) AS calendar_year
+FROM
+    t_employees e
+        JOIN
+    t_salaries s ON e.emp_no = s.emp_no
+        JOIN
+    t_dept_emp de ON s.emp_no = de.emp_no
+        JOIN
+    t_departments d ON de.dept_no = d.dept_no
+GROUP BY d.dept_no , gender, calendar_year
+HAVING calendar_year <= 2002
+ORDER BY d.dept_no;
+
+OUTPUT:
+gender	dept_name	salary	calendar_year
+M	      Marketing	58895.85	1990
+M	      Marketing	59232.75	1991
+M     	Marketing	59743.08	1992
+M     	Marketing	60436.85	1993
+M      	Marketing	64547.55	1994
+M	      Marketing	65377.05	1995
+M	      Marketing	66467.56	1996
+M	      Marketing	67253.18	1997
+M	      Marketing	66332.51	1998
+M	      Marketing	67594.58	1999
+M	      Marketing	73248.01	2000
+M	      Marketing	75364.26	2001
+M     	Marketing	77525.24	2002
+F     	Marketing	57358.31	1990
+F     	Marketing	57670.20	1991
+F      	Marketing	59755.19	1992
+F     	Marketing	60879.25	1993
+F     	Marketing	61673.05	1994
+F	      Marketing	63080.14	1995
+F	      Marketing	63678.94	1996
+F	      Marketing	64402.33	1997
+F	      Marketing	65582.10	1998
+F	      Marketing	66361.30	1999
+F	      Marketing	68347.80	2000
+F	      Marketing	70363.80	2001
+F	      Marketing	71984.04	2002
